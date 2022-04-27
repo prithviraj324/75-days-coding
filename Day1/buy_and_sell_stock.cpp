@@ -9,7 +9,7 @@ public:
             if(pnew>=profit)
                 profit=pnew;
             if(pmax<*i)
-                pmax=*i;
+                pmax=*i; 
         }
         return profit;
     }
