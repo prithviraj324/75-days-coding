@@ -6,7 +6,7 @@ public:
         int l=0,r=1;
         int n=nums.size();
         while(l<r && r<n) {
-            if(nums[l]!=0 && nums[r]!=0) {//1,2
+            if(nums[l]!=0 && nums[r]!=0) {   //1,2
                 l+=2;
                 r+=2;
             }
@@ -18,7 +18,7 @@ public:
                 l++;
                 r=r+1;
             }
-            else {//3,0
+            else {                          //3,0
                 l++;
                 r=r+1;
             }
