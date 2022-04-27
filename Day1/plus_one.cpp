@@ -3,7 +3,7 @@ using namespace std;
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
-        int cover=1;
+        int cover=1; 
         for(auto i=digits.rbegin(); i!=digits.rend() && cover!=0; i++) {
             if(*i==9 && i==digits.rend()-1) {
                 *i=0;
