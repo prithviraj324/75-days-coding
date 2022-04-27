@@ -12,7 +12,6 @@ public:
             else if(m.find(comp)!=m.end()) {
                 soln[0]=m[comp];
                 soln[1]=i;
-                
             }
         }
         return soln;
