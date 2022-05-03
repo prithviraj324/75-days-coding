@@ -45,3 +45,21 @@ public:
     ...
     */
 };
+
+/*RECURSIVE SOLUTION
+class Solution {
+public:
+    ListNode* rll(ListNode* prev, ListNode* cur) {
+        if(cur==nullptr)
+            return prev;
+        ListNode* nxt=cur->next;
+        cur->next=prev;
+        return rll(cur,nxt);
+    }
+    ListNode* reverseList(ListNode* head) {
+        if(head==nullptr)
+            return head;
+        return rll(nullptr,head);
+    }
+};
+*/
