@@ -4,7 +4,7 @@ class Solution {
 public:
     bool isValid(string s) {
         stack<char> st;
-        for(auto c:s) {//using normal for loop increases time taken by 500%
+        for(auto c:s) {//using normal for loop increases time taken by
             if(c=='(' || c=='{' || c=='[')
                 st.push(c);
             else if(!st.empty()){
