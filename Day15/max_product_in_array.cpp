@@ -16,3 +16,4 @@ public:
     }
 };
 //another solution, using linear sweep to find largest and 2nd largest elements
+//better than heap solution
