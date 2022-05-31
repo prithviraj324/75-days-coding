@@ -46,3 +46,48 @@ public:
         
     }
 };
+//after fixing interpretation, realized we need to store copies of node even though they have been visited in adj list
+class Solution2 {
+public:
+//this dfs function doesnt work
+    /*Node* dfs(Node* cur, unordered_map<Node*,Node*>& visited) {
+        Node* clone=new Node(cur->val);
+        visited[cur]=clone;
+        for(auto& node:cur->neighbors)  {
+            if(visited.find(cur) == visited.end())
+                clone->neighbors.push_back(dfs(node, visited));
+            else 
+                clone->neighbors.push_back(visited[node]);
+        }
+        return clone;
+    }*/
+    Node* dfs(Node* cur,unordered_map<Node*,Node*>& mp)
+    {
+        vector<Node*> neighbour;
+        Node* clone=new Node(cur->val);
+        mp[cur]=clone;
+            for(auto it:cur->neighbors)
+            {
+                if(mp.find(it)!=mp.end())   //already clone and stored in map
+                {
+                    neighbour.push_back(mp[it]);
+                }
+                else
+                    neighbour.push_back(dfs(it,mp));
+            }
+            clone->neighbors=neighbour;
+            return clone;
+    }
+    Node* cloneGraph(Node* node) {
+        if(!node) //no nodes in graph
+            return NULL;
+        
+        if(node->neighbors.size() == 0) {//only one node in graph
+            Node* temp=new Node(node->val);
+            return temp;
+        }
+        unordered_map<Node*,Node*> visited;
+        return dfs(node, visited);
+        
+    }
+};
