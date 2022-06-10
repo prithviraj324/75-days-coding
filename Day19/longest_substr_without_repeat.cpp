@@ -57,3 +57,34 @@ public:
 		return ans;
 	}
 };
+//----------------------------------------------------------------
+//alternative solution, same complexity, more application based
+//----------------------------------------------------------------
+class Solution3 {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n=s.size(), maxlen=1;
+        if(n<=1) return n;
+        unordered_map<char,int> m;
+        int i=0, j=1, temp=0;
+        m.insert({s[i],0});
+        while (i <= j && j<n) {
+            if(m.find(s[j]) == m.end()) {   //newest char not in prev substr
+                maxlen=max(maxlen, j-i+1);
+                m.insert({s[j],j});   //push in character and its index  
+                j++;
+            }
+            else {  //newest char already seen before
+                temp=m[s[j]];
+                while(i<=temp) {    //move 'i' till new character's first occurence
+                    m.erase(s[i]);  //erase any character occurences till then
+                    i++;
+                }
+                m.insert({s[j],j});   //since prev occurence of s[j] is deleted, add it
+                maxlen=max(maxlen, j-i+1);
+                j++;
+            }
+        }
+        return maxlen;
+    }
+};
