@@ -39,7 +39,7 @@ public:
 //bottom up tabulated
 class Solution3 {
 public:
-    int longestCommonSubsequence(string s1, string s2)
+    int longestCommonSubsequence(string s1, string s2)//on LC
     {
         int n=s1.size(), m=s2.size();
         vector<vector<int>> dp(n+1, vector<int>(m+1,-1));
