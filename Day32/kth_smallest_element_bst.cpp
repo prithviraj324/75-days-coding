@@ -9,7 +9,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-
+//bruteforce O(n) dfs soln with maxheap holding k smallest values, using pq.top() to prune
 class Solution {
 public:
     priority_queue<int> pq;
@@ -29,4 +29,26 @@ public:
         dfs(root, k);
         return pq.top();
     }
+};
+//smarter solution
+//in inorder traversal of bst, arr[k-1] is kth smallest element anyways
+//TC: O(k), SC: O(k) i.e stack space
+class Solution {
+public:
+    int ans;
+    
+    int kthSmallest(TreeNode* root, int k) {
+        inorder(root, k);
+        return ans;
+    }
+    
+    void inorder(TreeNode* root, int& k) {
+        if (!root) return;
+        inorder(root->left, k);
+        if (--k == 0){
+            ans = root->val;
+            return;
+        } 
+        inorder(root->right, k);
+    }  
 };
