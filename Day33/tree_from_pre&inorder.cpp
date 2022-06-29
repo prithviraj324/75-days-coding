@@ -16,7 +16,7 @@ public:
         
         //preorder[0] = root of tree
         //so the postfix array has left and right subtrees
-        //decide which is left and right subtree by using inordere traversal
+        //decide which is left and right subtree by using inorder traversal
         //all elements in inorder[0....preorder[0]] are part of the left subtree, as inorder = left,root,right
         //repeat till either array is exhausted
         
