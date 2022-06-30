@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+//NOTE****: make sure there is a way to tell visisted nodes apart form unvisited nodes, here it is done using the fact that unviisted nodes are either -1 or INT_MAX
 class Solution {
 public:
     /**
