@@ -43,3 +43,29 @@ public:
         return ans;
     }
 };
+
+//new soln, same concept, is faster
+class Solution2 {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        queue<TreeNode*> q;
+        if(!root) return {};
+        
+        vector<int> res;
+        q.push(root);
+        while(!q.empty()) {
+            int k=q.size();
+            res.push_back(q.front()->val);
+            for(int i=0;i<k;i++) {
+                TreeNode* f=q.front();
+                q.pop();
+                if(f->right != NULL)
+                    q.push(f->right);   //right, then left for right side ordering
+                if(f->left != NULL)
+                    q.push(f->left);
+            }
+        }
+        
+        return res;
+    }
+};
