@@ -60,7 +60,7 @@ public:
         vector<int> degree(n, 0);
         for (auto &p: pre) {
             adj[p[1]].push_back(p[0]);
-            degree[p[0]]++;
+            degree[p[0]]++; //indegree is zero i.e its not a prereq of any course
         }
         queue<int> q;
         for (int i = 0; i < n; i++)
